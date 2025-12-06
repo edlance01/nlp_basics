@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        svg {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            background-color: #f7f9fc;
+            border-radius: 4px;
+        }
+        p {
+            text-align: center;
+            color: #333;
+            font-size: 1.1em;
+            margin-top: 30px;
+        }
+        /* Style for the points */
+        .word-point {
+            transition: all 0.3s ease;
+        }
+        .word-point:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>❌ BoW/TF-IDF Limitation: Words are Distant</h2>
+        <svg width="600" height="500">
+            <line x1="60" y1="440" x2="540" y2="440" stroke="black" stroke-width="2"></line>
+            <line x1="60" y1="60" x2="60" y2="440" stroke="black" stroke-width="2"></line>
+            
+            <text x="300" y="480" text-anchor="middle" fill="black">Dimension 1 (e.g., Doc 1 Vector)</text>
+            <text x="25" y="250" fill="black" writing-mode="tb" text-anchor="middle">Dimension 2 (e.g., Doc 2 Vector)</text>
+            
+            <line x1="156" y1="60" x2="156" y2="440" stroke="#ddd" stroke-width="1"></line>
+            <line x1="252" y1="60" x2="252" y2="440" stroke="#ddd" stroke-width="1"></line>
+            <line x1="348" y1="60" x2="348" y2="440" stroke="#ddd" stroke-width="1"></line>
+            <line x1="444" y1="60" x2="444" y2="440" stroke="#ddd" stroke-width="1"></line>
+            <line x1="540" y1="60" x2="540" y2="440" stroke="#ddd" stroke-width="1"></line>
+            
+            <line x1="60" y1="364" x2="540" y2="364" stroke="#ddd" stroke-width="1"></line>
+            <line x1="60" y1="288" x2="540" y2="288" stroke="#ddd" stroke-width="1"></line>
+            <line x1="60" y1="212" x2="540" y2="212" stroke="#ddd" stroke-width="1"></line>
+            <line x1="60" y1="136" x2="540" y2="136" stroke="#ddd" stroke-width="1"></line>
+            <line x1="60" y1="60" x2="540" y2="60" stroke="#ddd" stroke-width="1"></line>
+            
+            <text x="156" y="460" text-anchor="middle" fill="black" font-size="12">0.2</text>
+            <text x="252" y="460" text-anchor="middle" fill="black" font-size="12">0.4</text>
+            <text x="348" y="460" text-anchor="middle" fill="black" font-size="12">0.6</text>
+            <text x="444" y="460" text-anchor="middle" fill="black" font-size="12">0.8</text>
+            <text x="540" y="460" text-anchor="middle" fill="black" font-size="12">1.0</text>
+            
+            <text x="40" y="367" text-anchor="middle" fill="black" font-size="12">0.2</text>
+            <text x="40" y="291" text-anchor="middle" fill="black" font-size="12">0.4</text>
+            <text x="40" y="215" text-anchor="middle" fill="black" font-size="12">0.6</text>
+            <text x="40" y="139" text-anchor="middle" fill="black" font-size="12">0.8</text>
+            <text x="40" y="63" text-anchor="middle" fill="black" font-size="12">1.0</text>
+            
+            <circle cx="156" cy="136" r="12" fill="#e74c3c" stroke="#c0392b" stroke-width="2" class="word-point"></circle>
+            <text x="156" y="116" text-anchor="middle" fill="#e74c3c" font-size="16" font-weight="bold">King</text>
+            <text x="156" y="166" text-anchor="middle" fill="#6c7a89" font-size="12">(0.2, 0.8)</text>
+            
+            <circle cx="252" cy="212" r="12" fill="#3498db" stroke="#2980b9" stroke-width="2" class="word-point"></circle>
+            <text x="252" y="192" text-anchor="middle" fill="#3498db" font-size="16" font-weight="bold">Queen</text>
+            <text x="252" y="242" text-anchor="middle" fill="#6c7a89" font-size="12">(0.4, 0.6)</text>
+            
+            <circle cx="444" cy="364" r="12" fill="#f1c40f" stroke="#f39c12" stroke-width="2" class="word-point"></circle>
+            <text x="444" y="344" text-anchor="middle" fill="#f1c40f" font-size="16" font-weight="bold">Banana</text>
+            <text x="444" y="394" text-anchor="middle" fill="#6c7a89" font-size="12">(0.8, 0.2)</text>
+            
+            <line x1="156" y1="136" x2="252" y2="212" stroke="#95a5a6" stroke-width="1" stroke-dasharray="4,2"></line>
+            <line x1="252" y1="212" x2="444" y2="364" stroke="#95a5a6" stroke-width="1" stroke-dasharray="4,2"></line>
+            <line x1="156" y1="136" x2="444" y2="364" stroke="#95a5a6" stroke-width="1" stroke-dasharray="4,2"></line>
+            
+            <text x="180" y="270" fill="#2c3e50" font-size="14" font-style="italic">Large Distance (Low Similarity)</text>
+            <!-- <text x="380" y="200" fill="#2c3e50" font-size="14" font-style="italic">Large Distance (Low Similarity)</text> -->
+
+        </svg>
+        <p>
+            In a **Bag-of-Words (BoW) or TF-IDF** vector space, words are positioned based purely on their frequency or co-occurrence, **not** their meaning.<br>
+            As a result, semantically similar words (**King** and **Queen**) are often treated as equally distant from each other as they are from an unrelated word (**Banana**).
+        </p>
+    </div>
+</body>
+</html>
